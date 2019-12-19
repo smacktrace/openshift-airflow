@@ -12,7 +12,7 @@ RUN yum install -y python3-devel \
         python3-pip \
         gcc
 
-RUN pip3 install 'apache-airflow[postgres,doc,azure,datadog,slack,snowflake]==1.10.5'
+RUN pip3 install -no-cache-dir 'apache-airflow[celery]==1.10.5'
 
 RUN chmod -R 770 /var/log/airflow && \
 	chgrp -R 0 /airflow  && \
@@ -23,7 +23,7 @@ EXPOSE 8080
 
 ENTRYPOINT [ "docker-entrypoint.sh" ]
 
-CMD ["airflow","webserver","-p","8080"]
+CMD ["airflow","worker"]
 
 USER 1001
 

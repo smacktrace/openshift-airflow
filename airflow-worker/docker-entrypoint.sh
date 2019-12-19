@@ -15,9 +15,6 @@ fi
 
 export alias python=python3
 
-if [ ! -f /airflow/airflow.db ]; then
-        airflow initdb
-fi
 
 ##########################      RUN CMD    ########################################
 
